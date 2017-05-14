@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Quiz Android Version</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="itens_exames">
+        <item>Assunto qual quer</item>
+        <item>Assunto importantes</item>
+        <item>Assunto legais</item>
+        <item>Assunto dinamicos</item>
+        <item>Assunto estranho</item>
+    </string-array>
+
+</resources>

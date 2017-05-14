@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hidai.retrofittest2.QuestionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/txtTypeQuestion" />
+
+
+    <Button
+        android:text="NEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:id="@+id/btnNext" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:id="@+id/txtTitleQuestion"
+        android:layout_alignParentTop="true"
+        />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/txtTitleQuestion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp"
+        android:id="@+id/rdGroup">
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitleQuestion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/rd1"
+            android:duplicateParentState="false"
+            android:checked="false" />
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rd1"
+            android:layout_alignLeft="@+id/rd1"
+            android:layout_alignStart="@+id/rd1"
+            android:layout_marginTop="27dp"
+            android:id="@+id/rd2"
+            android:duplicateParentState="false" />
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rd2"
+            android:layout_alignLeft="@+id/rd2"
+            android:layout_alignStart="@+id/rd2"
+            android:layout_marginTop="29dp"
+            android:id="@+id/rd3"
+            android:duplicateParentState="false" />
+
+        <RadioButton
+            android:text="RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:id="@+id/rd4"
+            android:layout_below="@+id/rd3"
+            android:layout_alignLeft="@+id/rd3"
+            android:layout_alignStart="@+id/rd3"
+            android:duplicateParentState="true"
+            android:checked="false" />
+
+
+    </RadioGroup>
+
+</RelativeLayout>
