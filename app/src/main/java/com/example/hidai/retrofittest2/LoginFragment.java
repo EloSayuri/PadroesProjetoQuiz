@@ -19,10 +19,10 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NovoFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
 
-    public NovoFragment() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -58,7 +58,7 @@ public class NovoFragment extends Fragment {
                             Toast.makeText(getActivity().getApplicationContext(), "Login encontrado: ", Toast.LENGTH_LONG).show();
 
                             //  NESSE PONTO CHAMA OUTRO FRAGMENTO
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new TempExamFragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new ExamFragment()).commit();
                         } else {
                             Login usuario = response.body();
                             //Log.i("ERRO DOIS: ",usuario.toString());

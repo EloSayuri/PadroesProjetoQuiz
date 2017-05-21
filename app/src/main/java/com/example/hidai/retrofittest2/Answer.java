@@ -4,7 +4,7 @@ package com.example.hidai.retrofittest2;
  * Created by Hidai on 09/05/2017.
  */
 
-public class Answers extends Question {
+public class Answer extends Question {
 
     String answer = "";
     Boolean correct = false;

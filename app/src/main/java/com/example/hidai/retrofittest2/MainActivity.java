@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             // adicionar o fragmento inicial
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.frame_container, new TempExamFragment())
+                    .add(R.id.frame_container, new LoginFragment())
                     .commit();
         }
 

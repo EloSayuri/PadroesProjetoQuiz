@@ -1,6 +1,5 @@
 package com.example.hidai.retrofittest2;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class Question {
     String question;
-    List<Answers> answers;
+    List<Answer> answers;
 
     public String getQuestion() {
         return question;
@@ -19,11 +18,11 @@ public class Question {
         this.question = question;
     }
 
-    public List<Answers> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<Answers> answers) {
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
 }

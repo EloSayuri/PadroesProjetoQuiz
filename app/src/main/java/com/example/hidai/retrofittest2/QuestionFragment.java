@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,22 +31,14 @@ public class QuestionFragment extends Fragment {
 
     int contQ = 0;
     int contA =0;
-    int sizeQuestion =0;
-    int iniciaAnsewrs = 0;
+    int contCertas =0;
+    int contErrdas = 0;
     List<ExamTest> list;
+    List<Answer> resposta = new ArrayList<>();//Inicializo com arraylist, por algum motivo não posso iniciar com null
 
     public QuestionFragment() {
         // Required empty public constructor
     }
-
-    public void start_next_question(){
-
-
-    };
-
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +56,7 @@ public class QuestionFragment extends Fragment {
         final RadioButton rd4 = (RadioButton) view.findViewById(R.id.rd4);
         final RadioGroup rdGroup = (RadioGroup) view.findViewById(R.id.rdGroup);
 
-       //Argumentos vindo da classe TempExamFragment via bundle
+       //Argumentos vindo da classe ExamFragment via bundle
         Bundle args = getArguments();
         final String  exAuthor  = (String)args.getSerializable("exAuthor");
         final String  exTitle  = (String)args.getSerializable("exTitle");
@@ -84,6 +77,8 @@ public class QuestionFragment extends Fragment {
                     list = response.body();
 
                     Log.i("teste",String.valueOf(list.size()));
+
+                    //Executa apenas uma vez para iniciar Q e A
                     for (ExamTest examtext:list) {//pegar exame de um autor
                         System.out.println(examtext.author);
                         System.out.println(examtext.description);
@@ -97,6 +92,12 @@ public class QuestionFragment extends Fragment {
                                     rd3.setText(quesion.getAnswers().get(2).getAnswer());
                                     rd4.setText(quesion.getAnswers().get(3).getAnswer());
                                     contA++;
+
+                                    }
+                                for(Answer answer:quesion.getAnswers()){ //Criar lista de resposta certas
+                                        if(answer.getCorrect().equals(true)){
+                                            resposta.add(answer);
+                                        }
                                 }
                         }
                     }
@@ -125,24 +126,84 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                contQ++;
-                contA = 0;
+                contQ++; //usado para trocar de questõa
+                contA = 0; //usado para trocar as respostas
 
-                rdGroup.clearCheck();
+                //Terceiro verifica se o que foi selecionado esta certo
+                switch (rdGroup.getCheckedRadioButtonId()) {
+                    case R.id.rd1:
+                        for (Answer answer:resposta) {
+                            if(answer.getAnswer().equals(rd1.getText())){
+                                System.out.println("RD1 CERTA");
+                                contCertas++;
+                            }else{
+                                continue;
+                            }
+                        }
+                        break;
+                    case R.id.rd2:
+                        for (Answer answer:resposta) {
+                            if(answer.getAnswer().equals(rd2.getText())){
+                                System.out.println("RD2 CERTA");
+                                contCertas++;
+                            }else{
+                                continue;
+                            }
+                        }
+                        break;
+                    case R.id.rd3:
+                        for (Answer answer:resposta) {
+                            if(answer.getAnswer().equals(rd3.getText())){
+                                System.out.println("RD3 CERTA");
+                                contCertas++;
+                            }else{
+                                continue;
+                            }
+                        }
+                        break;
+                    case R.id.rd4:
+                        for (Answer answer:resposta) {
+                            if(answer.getAnswer().equals(rd4.getText())){
+                                System.out.println("RD4 CERTA");
+                                contCertas++;
+                            }else{
+                                continue;
+                            }
+                        }
+                        break;
+                    default:
+                        Toast.makeText(getActivity().getApplicationContext(), "Não foi selecionado nenhuma resposta nessa pergunta",
+                                Toast.LENGTH_LONG).show();
+                }rdGroup.clearCheck(); //Limpa os radios
 
+                //Primeiro corre o array preenchendo as classes
                 for (ExamTest examtext:list) {//pegar exame de um autor
                     //System.out.println(examtext.author);
                     //System.out.println(examtext.description);
                     for(Question quesion:examtext.getQuestions()){
                         if(contQ >= examtext.getQuestions().size()){
-                            Toast.makeText(getActivity().getApplicationContext(), "Quiz finalizado",
+                            contErrdas = examtext.getQuestions().size() - contCertas;
+                            Toast.makeText(getActivity().getApplicationContext()
+                                    ,"Quiz finalizado " + "Numero de acertos: "+contCertas+" Erradas "+ contErrdas,
                                     Toast.LENGTH_LONG).show();
+
+                            //Passar dados para outro fragmento - ResultFragment
+                            Bundle args = new Bundle();
+                            args.putSerializable("certas", contCertas);
+                            args.putSerializable("erradas", contErrdas);
+                            Fragment toResultFragment = new ResultFragment();
+                            toResultFragment.setArguments(args);
+                            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new QuestionFragment()).commit();
+                            getFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.frame_container, toResultFragment)
+                                    .commit();
                             break;
                         }
 
-                        tituloQuestion.setText(examtext.getQuestions().get(contQ).getQuestion());
+                        tituloQuestion.setText(examtext.getQuestions().get(contQ).getQuestion());//Set o titulo da questão
 
-
+                        //Segundo preenche os radios
                         if(contA == contQ) { //Não  foi necessario usar a classe Answer aqui, pq na Question há um array de answers
                             rd1.setText(quesion.getAnswers().get(0).getAnswer());
                             rd2.setText(quesion.getAnswers().get(1).getAnswer());
@@ -151,23 +212,11 @@ public class QuestionFragment extends Fragment {
                             contA++;
                             break;
                         }contA++;
+
                     }
                 }
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
         return view;
     }

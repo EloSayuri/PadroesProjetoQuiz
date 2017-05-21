@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hidai.retrofittest2.ResultFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:id="@+id/txtMensagemFinal" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCertas"
+        android:layout_alignBaseline="@+id/txtMensagemCertas"
+        android:layout_alignBottom="@+id/txtMensagemCertas"
+        android:layout_alignLeft="@+id/txtMensagemFinal"
+        android:layout_alignStart="@+id/txtMensagemFinal"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:textStyle="normal|bold"
+        android:textColorLink="@android:color/holo_green_dark"
+        android:textColor="@android:color/holo_green_dark" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtMensageErradas"
+        android:layout_alignRight="@+id/txtCertas"
+        android:layout_alignEnd="@+id/txtCertas"
+        android:id="@+id/txtErradas"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="Inicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtErradas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
+        android:id="@+id/btnFinalizar"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:id="@+id/txtMensageErradas"
+        tools:text="Números de Erros:"
+        android:layout_below="@+id/txtMensagemCertas"
+        android:layout_toLeftOf="@+id/txtMensagemFinal"
+        android:layout_toStartOf="@+id/txtMensagemFinal"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:id="@+id/txtMensagemCertas"
+        tools:text="Números de Acertos:"
+        android:layout_below="@+id/txtMensagemFinal"
+        android:layout_toLeftOf="@+id/txtMensagemFinal"
+        android:layout_toStartOf="@+id/txtMensagemFinal"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark" />
+</RelativeLayout>
