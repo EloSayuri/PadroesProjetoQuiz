@@ -50,7 +50,8 @@
         android:layout_toEndOf="@+id/textView"
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
-        android:id="@+id/txtLogin" />
+        android:id="@+id/txtLogin"
+        android:textColorLink="?attr/actionModeSplitBackground" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -60,5 +61,6 @@
         android:layout_above="@+id/btnLogin"
         android:layout_alignLeft="@+id/txtLogin"
         android:layout_alignStart="@+id/txtLogin"
-        android:id="@+id/txtPassword" />
+        android:id="@+id/txtPassword"
+        android:textColorLink="?attr/actionModeSplitBackground" />
 </RelativeLayout>

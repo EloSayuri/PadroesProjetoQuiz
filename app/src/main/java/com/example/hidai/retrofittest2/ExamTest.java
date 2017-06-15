@@ -12,6 +12,7 @@ public class ExamTest {
     String author;
     String description;
     String title;
+    String imagem;
     List<Question> questions;
 
 
@@ -70,5 +71,13 @@ public class ExamTest {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

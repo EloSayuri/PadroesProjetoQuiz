@@ -35,7 +35,7 @@ public interface iRetrofitInterface3 {
     Call<List<ExamTest>> getExam(@Body ExamTest exam);
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.18:8080/") //localhost
+            .baseUrl("http://192.168.0.11:8080/") //localhost
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

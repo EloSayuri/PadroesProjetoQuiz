@@ -9,13 +9,15 @@ public class Exam {
 	private String type;
 	private String description;
 	private String author;
+	private String imagem;
 	private List<Question> questions = new LinkedList<Question>();
 	
 	// Constructor method
-	public Exam(String title, String type, String description, String author){
+	public Exam(String title, String type, String description, String author, String imagem ){
 		this.setTitle(title);
 		this.setDescription(description);
 		this.setAuthor(author);
+		this.setImagem(imagem);
 	}
 	
 	// Get-Set for title
@@ -25,6 +27,14 @@ public class Exam {
 	public void setTitle(String title){
 		this.title = title;
 	}
+	
+	// Get-Set for imagem
+		public String getImagem(){
+			return this.imagem;
+		}
+		public void setImagem(String imagem){
+			this.imagem = imagem;
+		}
 	
 	// Get-Set for type
 	public String getType(){

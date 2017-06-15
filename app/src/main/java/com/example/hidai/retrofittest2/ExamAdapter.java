@@ -1,6 +1,12 @@
 package com.example.hidai.retrofittest2;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +16,10 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.graphics.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -19,6 +28,7 @@ import java.util.List;
 
 public class ExamAdapter extends ArrayAdapter<ExamTest> {
 
+    String nomeImg;
     List<ExamTest> examList;
     Context  context;
     public ExamAdapter(Context context, int resource, List<ExamTest> list) {
@@ -53,9 +63,48 @@ public class ExamAdapter extends ArrayAdapter<ExamTest> {
 
         ExamTest examTest = getItem(position);
         Log.i("Edu",getItem(position).getDescription());
-        layoutHandler.title.setText(examTest.title);
-        layoutHandler.description.setText(examTest.description);
-        layoutHandler.imagem.setImageResource(R.drawable.db); //Personalizar depois 
+
+        layoutHandler.title.setText(examList.get(position).getTitle());
+        layoutHandler.description.setText(examList.get(position).getDescription());
+
+
+       //layoutHandler.imagem.setImageResource(R.drawable.imagem01); //Personalizar depois
+
+        Resources res = context.getResources();
+        String mDrawableName = examList.get(position).getImagem()+"";
+        int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
+        Drawable drawable = res.getDrawable(resID );
+        layoutHandler.imagem.setImageDrawable(drawable );
+
+       /* AssetManager manager =  context.getAssets();
+
+        // read a Bitmap from Assets
+        InputStream open = null;
+        try {
+
+            InputStream inputStream = manager.open("res/drawable/"+examList.get(position).getImagem()+".jpg");
+            //open = manager.open(examList.get(position).getImagem()+".jpg");
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            // Assign the bitmap to an ImageView in this layout
+
+            layoutHandler.imagem.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (open != null) {
+                try {
+                    open.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }*/
+
+
+
+
+
+
 
 
         return mView;

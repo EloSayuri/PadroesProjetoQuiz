@@ -51,7 +51,7 @@ public class MainServer {
 		Exam newExam;
 		Question newQuestion;
 		
-		newExam = new Exam("Database Test", "Technology", "Database questions to improve your knowledge", "Nicholas");
+		newExam = new Exam("Database Test", "Technology", "Database questions to improve your knowledge", "Nicholas", "imagem01");
 		
 		newQuestion = new Question("You can add a row using SQL in a database with which of the following?");
 		newQuestion.addAnswer(new Answer("ADD", false));
@@ -76,7 +76,7 @@ public class MainServer {
 		
 		model.addExam(newExam);
 		
-		newExam = new Exam("General Knowledge", "General", "Some wikipedia questions for you to enjoy!", "Gustavo");
+		newExam = new Exam("General Knowledge", "General", "Some wikipedia questions for you to enjoy!", "Gustavo", "imagem02");
 		
 		newQuestion = new Question("If a=1 and b=2, what is a+b?");
 		newQuestion.addAnswer(new Answer("12", false));
@@ -96,7 +96,7 @@ public class MainServer {
 		
 		// Robson Exam
 		
-		newExam = new Exam("Advanced PL/SQL", "General PL/SQL", "Other practical questions", "Robson");
+		newExam = new Exam("Advanced PLSQL", "General PL/SQL", "Other practical questions", "Robson", "imagem03");
 		
 		newQuestion = new Question("How many types of PL/SQL loops are exists?");
 		newQuestion.addAnswer(new Answer("3", true));
